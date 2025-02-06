@@ -1,0 +1,18 @@
+# Ignore all `.env` files (API keys, secrets)
+.env
+
+# Ignore all Python virtual environments
+venv/
+
+# Ignore compiled Python files
+__pycache__/
+
+# Ignore log files
+*.log
+
+# Ignore specific files
+secrets.txt
+debug.log
+
+# Ignore a folder and everything inside it
+node_modules/
