@@ -90,5 +90,11 @@ async def video_idea(ctx, *, topic: str):
     response_text = str(response)  # ✅ Convert response to string
     await ctx.send(response_text[:2000])  # ✅ Now it's safe to slice
 
+PORT = os.environ.get("PORT", 8080)
+
 if __name__ == "__main__":
     bot.run(bot_token)
+    import asyncio
+    loop = asyncio.get_event_loop()
+    loop.create_task(bot.start(bot_token))
+    loop.run_forever()
