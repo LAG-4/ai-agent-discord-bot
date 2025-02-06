@@ -3,6 +3,7 @@
 
 # Ignore all Python virtual environments
 venv/
+agentenv/
 
 # Ignore compiled Python files
 __pycache__/

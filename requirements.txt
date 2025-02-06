@@ -9,3 +9,10 @@ groq
 openai
 DiscordTools
 agno
+sqlalchemy
+pgvector
+psycopg[binary]
+pypdf
+google-generativeai
+huggingface-hub
+sentence-transformers
