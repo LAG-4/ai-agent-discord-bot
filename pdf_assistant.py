@@ -34,13 +34,15 @@ db_url = "postgresql+psycopg://ai:ai@localhost:5532/ai"
 
 
 
-knowledge_base=PDFUrlKnowledgeBase(
-
-    urls=["https://phi-public.s3.amazonaws.com/recipes/ThaiRecipes.pdf"],
-
-    vector_db=PgVector2(collection="reci",db_url=db_url,embedder=GeminiEmbedder())
-
+knowledge_base = PDFUrlKnowledgeBase(
+    urls=[
+        "https://image1121.s3.us-east-1.amazonaws.com/AryanGupta.pdf",
+        "https://image1121.s3.us-east-1.amazonaws.com/kunal.pdf",
+        "https://image1121.s3.us-east-1.amazonaws.com/ShivliRaina.pdf"
+    ],
+    vector_db=PgVector2(collection="reci", db_url=db_url, embedder=GeminiEmbedder())
 )
+
 
 
 
