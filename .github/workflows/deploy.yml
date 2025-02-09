@@ -1,0 +1,32 @@
+name: Deploy Streamlit App
+
+on:
+  push:
+    branches:
+      - master  # Adjust to your branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Set Up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+
+      - name: Install Dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Run Streamlit App
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          PHI_API_KEY: ${{ secrets.PHI_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
+          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+        run: |
+          streamlit run app.py --server.port 8501
