@@ -9,6 +9,7 @@ from phi.tools.duckduckgo import DuckDuckGo
 # Load environment variables
 load_dotenv()
 GROQ_API_KEY = os.environ.get("GROQ_API_KEY")
+
 # Streamlit Page Config
 st.set_page_config(
     page_title="Finance & Web AI",
@@ -38,7 +39,12 @@ finance_agent = Agent(
     name="Finance AI Agent",
     model=Groq(id="llama-3.3-70b-versatile"),
     tools=[
-        YFinanceTools(stock_price=True, analyst_recommendations=True, stock_fundamentals=True, company_news=True),
+        YFinanceTools(
+            stock_price=True,
+            analyst_recommendations=True,
+            stock_fundamentals=True,
+            company_news=True
+        ),
     ],
     instructions=["Use tables to display the data"],
     show_tool_calls=True,
@@ -59,37 +65,5 @@ multi_ai_agent = Agent(
     markdown=True,
 )
 
-<<<<<<< HEAD
-multi_ai_agent.print_response("Summarize analyst recommendation and share the latest news for NVDA",stream=True)
-x
-=======
-# --- Streamlit UI ---
-st.sidebar.header("🔍 Search Options")
-stock_symbol = st.sidebar.text_input("Enter Stock Ticker (e.g., NVDA, AAPL)", value="NVDA")
-query_type = st.sidebar.selectbox(
-    "Select Analysis Type",
-    ["Stock Insights & Analyst Recommendations", "Latest News"],
-)
-
-if st.sidebar.button("🚀 Get Insights"):
-    with st.spinner("Fetching AI-powered insights... ⏳"):
-        try:
-            if query_type == "Stock Insights & Analyst Recommendations":
-                prompt = f"Summarize analyst recommendation and share the latest stock insights for {stock_symbol}"
-            else:
-                prompt = f"Find the latest news about {stock_symbol}"
-
-            response = multi_ai_agent.run(prompt)
-
-            # Display results
-            st.subheader("📝 AI-Generated Insights")
-            st.markdown(response.content)
-
-        except Exception as e:
-            st.error(f"⚠️ Error fetching insights: {e}")
-
-# --- Footer ---
-st.markdown("---")
-st.markdown("🔗 Powered by AI Agents & Groq LLMs")
-
->>>>>>> 8c1fd3725a71070c3fbb662d575bad73fc9101b5
+# Print the response with streaming enabled
+multi_ai_agent.print_response("Summarize analyst recommendation and share the latest news for NVDA", stream=True)

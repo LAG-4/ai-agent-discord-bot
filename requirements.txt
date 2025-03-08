@@ -16,3 +16,4 @@ pypdf
 google-generativeai
 huggingface-hub
 sentence-transformers
+exa_py
