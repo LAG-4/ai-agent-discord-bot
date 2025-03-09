@@ -17,3 +17,10 @@ google-generativeai
 huggingface-hub
 sentence-transformers
 exa_py
+arxiv
+wikipedia
+sentence_transformers
+langchain-huggingface
+faiss-cpu
+langchain_groq
+streamlit
